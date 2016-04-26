@@ -16,7 +16,7 @@ gem 'sass', '3.4.22'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'rpsec-rails', '~>2.0'
+  gem 'rspec-rails', '~>2.0'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'selenium-webdriver'
