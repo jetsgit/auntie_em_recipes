@@ -1,0 +1,3 @@
+chefstep = angular.module 'chefstep', [
+
+]
