@@ -16,3 +16,4 @@
 .DS_Store
 .ruby-version
 .ruby-gemset
+.powenv
