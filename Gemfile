@@ -10,11 +10,13 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
+gem 'angular-rails-templates'
 gem 'sdoc', '~> 0.4.0', require: false, group: :doc
 
 # gem 'sass', '3.4.22'
 gem 'bower-rails'
 gem 'foreman'
+
 
 group :production, :staging do
   gem 'rails_12factor'
