@@ -17,3 +17,8 @@
 .ruby-version
 .ruby-gemset
 .powenv
+*.swo
+*.swp
+.DS_Store
+.rvm-gemset
+.rvm-version

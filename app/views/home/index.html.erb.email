@@ -1,4 +1,4 @@
-<div class="container-fluid" nga-app="chefstep">
+<div class="container-fluid" ng-app="auntie_em_recipes">
   <div class="panel panel-success">
     <div class="panel-heading">
       <h1 ng-if="name">Listing of Emails</h1>
