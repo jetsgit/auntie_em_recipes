@@ -16,7 +16,8 @@ gem 'sdoc', '~> 0.4.0', require: false, group: :doc
 
 # gem 'sass', '3.4.22'
 gem 'bower-rails'
-gem 'foreman'
+# Foreman should not be installed in Gemfile!
+# gem 'foreman'
 
 
 group :production, :staging do
