@@ -23,9 +23,9 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with :transaction
   end
 
-  config.after(:each) do
-    actionMailer::Base.deliveries.clear
-  end
+  # config.after(:each) do
+  #   actionMailer::Base.deliveries.clear
+  # end
 
   config.around(:each, type: :feature, js: true ) do |ex|
     DatabaseCleaner.strategy = :truncation
