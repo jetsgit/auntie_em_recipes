@@ -28,7 +28,6 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'teaspoon-jasmine'
   gem 'byebug'
-  gem 'rspec'
   gem 'rspec-rails', '~>2.0'
   gem 'capybara'
   gem 'database_cleaner'
