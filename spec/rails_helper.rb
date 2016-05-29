@@ -8,6 +8,7 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/poltergeist'
+require 'json'
 
 Capybara.javascript_driver = :poltergeist
 # If you are not using ActiveRecord, you can remove this line.
