@@ -27,6 +27,7 @@ group :production, :staging do
 end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'teaspoon', git: 'git://github.com/modeset/teaspoon.git'
   gem 'teaspoon-jasmine'
   gem 'byebug'
   gem 'rspec-rails', '~>2.0'
@@ -34,6 +35,7 @@ group :development, :test do
   gem 'database_cleaner'
   # gem 'selenium-webdriver'
   gem 'poltergeist'
+
   gem 'capybara-angular'
 end
 
