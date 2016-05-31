@@ -6,5 +6,9 @@
 #
 
 beforeEach ->
-  this.addMatchers
-    toEqualData: (expected)-> return angular.equals(this.actual, expected)
+  jasmine.addMatchers(
+    toEqualData: ->
+      compare: (actual, expected) ->
+        pass: angular.equals actual, expected
+  )
+

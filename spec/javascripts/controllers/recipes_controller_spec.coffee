@@ -1,4 +1,4 @@
-#= require spec_helper
+#= require 'spec_helper'
 describe 'RecipesController', ->
   scope           = null
   ctrl            = null
@@ -26,43 +26,43 @@ describe 'RecipesController', ->
                            $location:  location)
     )
 
-    beforeEach(module("auntie_em_recipes"))
-    afterEach ->
-      httpBackend.verifyNoOutstandingExpectation()
-      httpBackend.verifyNoOutstandingRequest()
+  beforeEach(module("auntie_em_recipes"))
+  afterEach ->
+    httpBackend.verifyNoOutstandingExpectation()
+    httpBackend.verifyNoOutstandingRequest()
 
-    describe 'controller initialization', ->
-      describe 'when no keywords present', ->
-        beforeEach(setupController())
-        
-        it 'defaults to no recipes', ->
-          expect(scope.recipes).toEqualData([])
+  describe 'controller initialization', ->
+    describe 'when no keywords present', ->
+      beforeEach(setupController())
+      
+      it 'defaults to no recipes', ->
+        expect(scope.recipes).toEqualData([])
 
-    describe 'with keywords', ->
+  describe 'with keywords', ->
+    keywords = 'foo'
+    recipes = [
+      {
+        id: 2
+        name: 'Baked Potatoes'
+      },
+      {
+        id: 4
+        name: 'Potatoes Au Gratin'
+      }
+    ]
+    beforeEach ->
+      setupController(keywords, recipes)
+      httpBackend.flush()
+
+    it 'calls the backend', ->
+      expect(scope.recipes).toEqualData(recipes)
+
+  describe 'search()', ->
+    beforeEach ->
+      setupController()
+
+    it 'redirects to itself to itself with a keyword param', ->
       keywords = 'foo'
-      recipes = [
-        {
-          id: 2
-          name: 'Baked Potatoes'
-        },
-        {
-          id: 4
-          name: 'Potatoes Au Gratin'
-        }
-      ]
-      beforeEach ->
-        setupController(keywords, recipes)
-        httpBackend.flush()
-
-      it 'calls the backend', ->
-        expect(scope.recipes).toEqualData(recipes)
-
-    describe 'search()', ->
-      beforeEach ->
-        setupController()
-
-      it 'redirects to itself to itself with a keyword param', ->
-        keywords = 'foo'
-        scope.search(keywords)
-        expect(location.path()).toBe('/')
-        expect(location.search()).toEqualData({keywords: keywords})
+      scope.search(keywords)
+      expect(location.path()).toBe('/')
+      expect(location.search()).toEqualData({keywords: keywords})
