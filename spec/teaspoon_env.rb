@@ -10,7 +10,7 @@ Teaspoon.configure do |config|
 
   # Paths that will be appended to the Rails assets paths
   # Note: Relative to `config.root`.
-  config.asset_paths = ["spec/javascripts", "spec/javascripts/controllers", "spec/javascripts/stylesheets"]
+  config.asset_paths = ["spec/javascripts", "spec/javascripts/stylesheets"]
 
   # Fixtures are rendered through a controller, which allows using HAML, RABL/JBuilder, etc. Files in these paths will
   # be rendered as fixtures.
@@ -38,7 +38,7 @@ Teaspoon.configure do |config|
 
     # Specify a file matcher as a regular expression and all matching files will be loaded when the suite is run. These
     # files need to be within an asset path. You can add asset paths using the `config.asset_paths`.
-    suite.matcher =  "{spec/javascripts,app/assets}/**/*_spec.{js,js.coffee,coffee}"
+    suite.matcher = "{spec/javascripts,app/assets}/**/*_spec.{js,js.coffee,coffee}"
 
     # Load additional JS files, but requiring them in your spec helper is the preferred way to do this.
     #suite.javascripts = []
@@ -98,7 +98,7 @@ Teaspoon.configure do |config|
   # Selenium Webdriver: https://github.com/modeset/teaspoon/wiki/Using-Selenium-WebDriver
   # BrowserStack Webdriver: https://github.com/modeset/teaspoon/wiki/Using-BrowserStack-WebDriver
   # Capybara Webkit: https://github.com/modeset/teaspoon/wiki/Using-Capybara-Webkit
-  config.driver = :phantomjs
+  #config.driver = :phantomjs
 
   # Specify additional options for the driver.
   #
@@ -133,10 +133,10 @@ Teaspoon.configure do |config|
   # Note: Output files can be specified by using `"junit>/path/to/output.xml"`.
   #
   # Available: :dot, :clean, :documentation, :json, :junit, :pride, :rspec_html, :snowday, :swayze_or_oprah, :tap, :tap_y, :teamcity
-  config.formatters = [:dot]
+  #config.formatters = [:dot]
 
   # Specify if you want color output from the formatters.
-  config.color = true
+  #config.color = true
 
   # Teaspoon pipes all console[log/debug/error] to $stdout. This is useful to catch places where you've forgotten to
   # remove them, but in verbose applications this may not be desirable.
