@@ -5,10 +5,6 @@ describe 'RecipesController', ->
       $scope: @scope
       $location: @location
     )
-    # if typeof(results) != 'undefined'
-    #   request = new RegExp("\/recipes.*keywords=#{keywords}")
-    #   httpBackend.expectGET(request).respond(results)
-
 
   describe 'controller initialization', ->
     describe 'when no keywords present', ->

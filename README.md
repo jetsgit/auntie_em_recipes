@@ -13,9 +13,7 @@ Testing with Teaspoon / Jasmine / Rspec
 
 * Using Bower for js installation
 
-
 * Database: Postgresql
-
 
 * Test Suite:  be rake teaspoon
 
