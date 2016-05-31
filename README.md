@@ -2,30 +2,23 @@ README
 ========
 
 Rails backend / AngularJS frontend
+---------------------------------
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Example of a SPA with AngularJS and Rails.
+Testing with Teaspoon / Jasmine / Rspec
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+
+* Ruby version: 2.2.2
+
+* Using Bower for js installation
+
+
+* Database: Postgresql
+
+
+* Test Suite:  be rake teaspoon
+
+
+
+
