@@ -1,20 +1,74 @@
 #= require 'spec_helper'
-describe 'RecipesController', ->
-  beforeEach ->
-    @controller('RecipesController',
-      $scope: @scope
-      $location: @location
-    )
+describe "RecipesController", ->
+  scope        = null
+  ctrl         = null
+  location     = null
+  routeParams  = null
+  resource     = null
+
+  httpBackend = null
+
+  setupController =(keywords, results)->
+    inject(($location, $routeParams, $rootScope, $resource, $httpBackend,  $controller )->
+      scope       = $rootScope.$new()
+      location    = $location
+      resource    = $resource
+      routeParams = $routeParams
+      routeParams.keywords = keywords
+      httpBackend = $httpBackend
+
+      # httpBackend = $injector.get('$httpBackend')
+
+      if results
+        request = new RegExp("\/recipes.*keywords=#{keywords}")
+        # httpBackend.when('GET', request).respond(results)
+        httpBackend.expectGET(request).respond(results)
+      ctrl        = $controller('RecipesController',
+                                 $scope: scope
+                                 $location: location)
+  )
+
+  beforeEach(module("auntie_em_recipes"))
+
+  afterEach ->
+    httpBackend.verifyNoOutstandingExpectation()
+    httpBackend.verifyNoOutstandingRequest()
+
 
   describe 'controller initialization', ->
     describe 'when no keywords present', ->
-      it 'defaults to have no recipes', ->
-        expect(@scope.recipes).toEqualData([])
 
+      beforeEach ->
+        setupController()
 
-  describe 'search()', ->
-    it 'redirects to itself to itself with a keyword param', ->
+      it 'defaults to no recipes', ->
+        expect(scope.recipes).toEqualData([])
+
+    describe 'with keywords', ->
       keywords = 'foo'
-      @scope.search(keywords)
-      expect(@location.path()).toBe('/')
-      expect(@location.search()).toEqualData({keywords: keywords})
+      recipes = [
+        {
+          id: 2
+          name: 'Baked Potatoes'
+        },
+        {
+          id: 4
+          name: 'Potatoes Au Gratin'
+        }
+      ]
+      beforeEach ->
+        setupController(keywords, recipes)
+        httpBackend.flush()
+      
+      it 'calls the httpBackend', ->
+        expect(scope.recipes).toEqualData(recipes)
+     
+    describe 'search', ->
+      beforeEach ->
+        setupController()
+      it 'redirects to itself with a keyword param', ->
+        keywords = 'foo'
+        scope.search(keywords)
+        expect(location.path()).toBe('/')
+        expect(location.search()).toEqualData({keywords: keywords})
+         
