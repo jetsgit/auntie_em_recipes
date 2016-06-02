@@ -17,11 +17,8 @@ describe "RecipesController", ->
       routeParams.keywords = keywords
       httpBackend = $httpBackend
 
-      # httpBackend = $injector.get('$httpBackend')
-
       if results
         request = new RegExp("\/recipes.*keywords=#{keywords}")
-        # httpBackend.when('GET', request).respond(results)
         httpBackend.expectGET(request).respond(results)
       ctrl        = $controller('RecipesController',
                                  $scope: scope
