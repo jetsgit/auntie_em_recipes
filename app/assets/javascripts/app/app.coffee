@@ -1,3 +1,4 @@
+controllers = angular.module('controllers', [])
 auntie_em_recipes = angular.module('auntie_em_recipes', [
   'templates',
   'ngRoute',
