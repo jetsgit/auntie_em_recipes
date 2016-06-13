@@ -13,5 +13,8 @@ auntie_em_recipes.config(['$routeProvider', '$locationProvider',
       .when('/',
         templateUrl: 'index.html',
         controller: 'RecipesController'
+      ).when('/recipes/:recipeID',
+        templateUrl: 'show.html'
+        controller: 'RecipeController'
       )
 ])
