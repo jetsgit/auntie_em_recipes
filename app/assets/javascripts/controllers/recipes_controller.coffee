@@ -5,9 +5,13 @@ controllers.controller('RecipesController', ['$scope', '$routeParams', '$locatio
     # Define Recipe Class
     Recipe = $resource('/recipes/:recipeID', { recipeID: "@id", format: 'json' })
     if $routeParams.keywords
-      Recipe.query(keywords: $routeParams.keywords, (results) ->
-        $scope.recipes = results
-      )
+      Recipe.query(keywords: $routeParams.keywords)
+        .$promise.then( (results)->
+          $scope.recipes = results
+        )
+      # Recipe.query(keywords: $routeParams.keywords, (results) ->
+      #   $scope.recipes = results
+      # )
     else
       $scope.recipes = []
     $scope.placeholder = "Kalamari, Paella, Lamb Stew, etc..."
