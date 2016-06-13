@@ -3,7 +3,9 @@ auntie_em_recipes = angular.module('auntie_em_recipes', [
   'templates',
   'ngRoute',
   'ngResource',
-  'controllers'
+  'controllers',
+  'angular-flash.service',
+  'angular-flash.flash-alert-directive'
 ])
 
 auntie_em_recipes.config(['$routeProvider', '$locationProvider',

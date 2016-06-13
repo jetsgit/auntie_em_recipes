@@ -1,6 +1,6 @@
 controllers = angular.module('controllers')
-controllers.controller('RecipeController',['$scope', '$routeParams', '$resource',
-  ($scope, $routeParams, $resource)->
+controllers.controller('RecipeController',['$scope', '$routeParams', '$resource', 'flash'
+  ($scope, $routeParams, $resource, flash)->
     Recipe = $resource('/recipes/:recipeID', { recipeID: "@id", format: 'json' })
 
     if $routeParams.recipeID
@@ -8,7 +8,7 @@ controllers.controller('RecipeController',['$scope', '$routeParams', '$resource'
         ( (recipe)-> $scope.recipe = recipe ),
         ( (httpResponse)->
           $scope.recipe = null
-          # flash.error = "There is no recipe with ID #{$routeParams.recipeID}"
+          flash.error = "There is no recipe with ID #{$routeParams.recipeID}"
         )
       )
     else

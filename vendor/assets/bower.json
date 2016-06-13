@@ -5,13 +5,7 @@
     "angular-route": "~> 1.5.6",
     "angular-resource": "~> 1.5.6",
     "angular-mocks": "~> 1.5.6",
-    "bootstrap-sass-official": "~> 3.3.6"
-  },
-  "resolutions": {
-    "angular": "1.5.6",
-    "angular-route": "1.5.6",
-    "angular-resource": "1.5.6",
-    "angular-mocks": "1.5.6",
+    "angular-flash": "latest",
     "bootstrap-sass-official": "~> 3.3.6"
   }
 }
