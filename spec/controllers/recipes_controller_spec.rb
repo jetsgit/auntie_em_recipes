@@ -12,9 +12,14 @@ describe RecipesController do
       xhr :get, :index, format: :json, keywords: keywords
     end
 
+    after do
+      Recipe.delete_all
+    end
+
     subject(:results) { JSON.parse(response.body) }
+
     def extract_name
-      ->(object) {object["name"]}
+      ->(object) { object["name"] }
     end
 
     context 'when the search finds results' do
@@ -23,7 +28,7 @@ describe RecipesController do
         expect(response.status).to eq(200)
       end
       it 'should return 2 results' do
-        expect(results.size).to eq(8)
+        expect(results.size).to eq(2)
       end
       it "should include 'Baked Potato w/ Cheese'" do
         expect(results.map(&extract_name)).to include('Baked Potato w/ Cheese')
