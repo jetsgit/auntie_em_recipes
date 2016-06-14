@@ -1,4 +1,3 @@
-controllers = angular.module('controllers', [])
 auntie_em_recipes = angular.module('auntie_em_recipes', [
   'templates',
   'ngRoute',
@@ -8,9 +7,9 @@ auntie_em_recipes = angular.module('auntie_em_recipes', [
   'angular-flash.flash-alert-directive'
 ])
 
-auntie_em_recipes.config(['$routeProvider', '$locationProvider',
-  ($routeProvider, $locationProvider) ->
-    $locationProvider.html5Mode(true)
+auntie_em_recipes.config(['$routeProvider', #'$locationProvider',
+  ($routeProvider ) ->
+    # $locationProvider.html5Mode(true)
     $routeProvider
       .when('/',
         templateUrl: 'index.html',
@@ -20,3 +19,4 @@ auntie_em_recipes.config(['$routeProvider', '$locationProvider',
         controller: 'RecipeController'
       )
 ])
+controllers = angular.module('controllers', [])
