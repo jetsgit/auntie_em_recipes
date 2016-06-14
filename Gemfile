@@ -6,6 +6,10 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'slim'
+
+# Below will replace Rails generators for ERB
+# gem 'slim-rails'
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -30,12 +34,14 @@ group :development, :test do
   gem 'teaspoon', git: 'git://github.com/modeset/teaspoon.git'
   gem 'teaspoon-jasmine'
   gem 'byebug'
+  gem 'rspec'
   gem 'rspec-rails', '~>2.0'
+  gem 'factory_girl_rails', '~>4.0'
   gem 'capybara'
   gem 'database_cleaner'
-  # gem 'selenium-webdriver'
-  gem 'poltergeist'
-
+  gem 'selenium-webdriver'
+  # gem 'poltergeist'
+  gem 'phantomjs'
   gem 'capybara-angular'
 end
 
