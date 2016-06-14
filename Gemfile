@@ -39,9 +39,12 @@ group :development, :test do
   gem 'factory_girl_rails', '~>4.0'
   gem 'capybara'
   gem 'database_cleaner'
+
   gem 'selenium-webdriver'
-  # gem 'poltergeist'
   gem 'phantomjs'
+
+# gem 'poltergeist'
+
   gem 'capybara-angular'
 end
 
