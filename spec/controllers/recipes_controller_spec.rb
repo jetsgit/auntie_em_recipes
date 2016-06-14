@@ -23,7 +23,7 @@ describe RecipesController do
         expect(response.status).to eq(200)
       end
       it 'should return 2 results' do
-        expect(results.size).to eq(2)
+        expect(results.size).to eq(8)
       end
       it "should include 'Baked Potato w/ Cheese'" do
         expect(results.map(&extract_name)).to include('Baked Potato w/ Cheese')

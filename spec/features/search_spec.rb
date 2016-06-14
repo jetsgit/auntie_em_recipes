@@ -9,7 +9,7 @@ feature 'Looking up recipes', js: true do
   end
   scenario 'finding recipes' do
     visit '/'
-    fill_in "keywords", with: "Baked"
+    fill_in "keywords", with: "baked"
     click_on "Search"
     expect(page).to have_content('Baked Potato')
     expect(page).to have_content('Baked Brussel Sprouts')

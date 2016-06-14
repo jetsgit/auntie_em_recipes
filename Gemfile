@@ -40,10 +40,10 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
 
-  gem 'selenium-webdriver'
-  gem 'phantomjs'
+  # gem 'selenium-webdriver'
+  # gem 'phantomjs'
 
-# gem 'poltergeist'
+  gem 'poltergeist'
 
   gem 'capybara-angular'
 end
