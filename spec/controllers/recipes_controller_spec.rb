@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe RecipesController do
   render_views
@@ -75,5 +75,35 @@ describe RecipesController do
       let(:recipe_id) { -999 }
       it { expect(response.status).to eq(404) }
     end
+  end
+
+  describe "create" do
+    before do
+      xhr :post, :create, format: :json, recipe: { name: "Toast",
+                                                   instructions: "Put bread in toaster, when done spread with butter" }
+    end
+    
+    after do
+      Recipe.delete_all
+    end
+
+    it { expect(response.status).to eq(201) }
+    it { expect(Recipe.last.name).to eq("Toast") }
+    it {expect(Recipe.last.instructions).to eq("Put bread in toaster, when done spread with butter")}
+  end
+
+  describe  "destroy" do
+    let(:recipe_id) {
+      Recipe.create!(name: 'Baked Potato w/ Cheese', 
+                     instructions: "Nuke for 4 minutes, top with cheese")
+    }
+
+    before do
+      xhr :delete, :destroy, format: :json, id: recipe_id
+    end
+
+    it { expect(response.status).to eq(204) }
+    it { expect(response).to be_success }
+
   end
 end
