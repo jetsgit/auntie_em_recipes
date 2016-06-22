@@ -5,6 +5,7 @@ describe 'RecipeController', ->
   routeParams  = null
   httpBackend  = null
   flash        = null
+  location     = null
   recipeID     = 42
   
   fakeRecipe  =
@@ -12,8 +13,8 @@ describe 'RecipeController', ->
     name: 'Baked Potatoes'
     instructions: 'Pierce potato with fork, nuke for 20 minutes'
 
-  setupController =(recipeExists=true, recipeID=42)->
-    inject(($location, $routeParams, $rootScope, $resource, $httpBackend, $controller, _flash_)->
+  setupController = (recipeExists=true, recipeID=42)->
+    inject(($location, $routeParams, $rootScope, $resource, $httpBackend, $controller, _flash_) ->
       scope       = $rootScope.$new()
       location    = $location
       resource    = $resource
@@ -54,4 +55,50 @@ describe 'RecipeController', ->
         httpBackend.flush()
         expect(scope.recipe).toBe(null)
         expect(flash.error).toBe("There is no recipe with ID #{recipeID}")
-      
+        
+  describe 'create', ->
+    newRecipe =
+      id: 42
+      name: 'Toast'
+      instructions: 'put in toaster, push lever'
+
+    beforeEach ->
+      setupController(false, false)
+      request = new RegExp("\/recipes")
+      httpBackend.expectPOST(request).respond(201, newRecipe)
+
+    it 'posts to the backend', ->
+      scope.recipe.name           = newRecipe.name
+      scope.recipe.instructions   = newRecipe.instructions
+      scope.save()
+      httpBackend.flush()
+      expect(location.path()).toBe("/recipes/#{newRecipe.id}")
+  describe 'update', ->
+    updatedRecipe = 
+      name: 'Toast'
+      instructions: 'put in toaster, push lever, add butter'
+
+    beforeEach ->
+      setupController()
+      httpBackend.flush()
+      request = new RegExp("\/recipes")
+      httpBackend.expectPUT(request).respond(204)
+
+    it 'posts to the backend', ->
+      scope.recipe.name         = updatedRecipe.name
+      scope.recipe.instructions = updatedRecipe.instructions
+      scope.save()
+      httpBackend.flush()
+      expect(location.path()).toBe("/recipes/#{scope.recipe.id}")
+
+  describe 'delete', ->
+    beforeEach ->
+      setupController()
+      httpBackend.flush()
+      request = new RegExp("\/recipes/#{scope.recipe.id}")
+      httpBackend.expectDELETE(request).respond(204)
+
+    it 'posts to the backend', ->
+      scope.delete()
+      httpBackend.flush()
+      expect(location.path()).toBe('/')

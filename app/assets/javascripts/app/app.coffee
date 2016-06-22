@@ -18,9 +18,16 @@ auntie_em_recipes.config(['$routeProvider', 'flashProvider',#'$locationProvider'
       .when('/',
         templateUrl: 'index.html',
         controller: 'RecipesController'
+      ).when('/recipes/new',
+        templateUrl: "form.html"
+        controller: 'RecipeController'
       ).when('/recipes/:recipeID',
         templateUrl: 'show.html'
         controller: 'RecipeController'
+      ).when('/recipes/:recipeID/edit',
+        templateUrl: "form.html"
+        controller: 'RecipeController'
       )
+        
 ])
 controllers = angular.module('controllers', [])

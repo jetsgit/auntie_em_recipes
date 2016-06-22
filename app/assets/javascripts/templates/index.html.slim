@@ -24,7 +24,7 @@ section.row(ng-if="recipes")
             |
               {{recipe.name}}
         .col-md-6
-          button.btn.btn-pad.btn-info
+          button.btn.btn-pad.btn-info[ng-click="edit(recipe.id)"]
             |
               Edit
           button.btn.btn-danger
